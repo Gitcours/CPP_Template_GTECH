@@ -116,6 +116,20 @@ public:
     }
 };
 
+// Spécialisation pour les objets de type std::string
+template <>
+class Objet<std::string> {
+private:
+    std::string nom;
+    std::string description;
+public:
+    Objet(std::string n, std::string desc) : nom(n), description(desc) {}
+    void afficher() {
+        std::cout << "Objet spécial: " << nom << " - Description: " << description << std::endl;
+    }
+};
+
+
 int main() {
     Objet<int> potion("Potion de vie", 50);
     Objet<double> gemme("Gemme magique", 99.99);
