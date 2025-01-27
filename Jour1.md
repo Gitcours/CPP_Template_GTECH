@@ -149,28 +149,6 @@ int main() {
 
 **Objectif** : Créer un système d'inventaire générique qui peut contenir des objets de différents types. Notre `Personnage` dispose maintenant d'un inventaire, faites les modifications nécessaires.
 
-```cpp
-#include <iostream>
-
-template <typename T>
-class Inventaire {
-private:
-    T objets[5];
-    int index;
-public:
-    Inventaire() : index(0) {}
-    void ajouterObjet(T objet) {
-        if (index < 5) {
-            objets[index++] = objet;
-        }
-    }
-    void afficherInventaire() {
-        for (int i = 0; i < index; ++i) {
-            std::cout << "Objet " << i+1 << ": " << objets[i] << std::endl;
-        }
-    }
-};
-```
 
 ---
 
