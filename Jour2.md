@@ -56,7 +56,7 @@ int main() {
 
 `errno` est une variable globale définie dans `<cerrno>`. Elle est mise à jour par certaines fonctions du système pour indiquer une erreur.  
 
-### **Exemple :**  
+### **Exemple (Obsolète) :**  
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -74,16 +74,18 @@ int main() {
 ### **Explication :**  
 - `fopen()` retourne `nullptr` si le fichier n’existe pas.  
 - `errno` est automatiquement mis à jour avec le code d'erreur.  
-- `strerror(errno)` affiche un message lisible associé à l'erreur.  
+- `strerror(errno)` affiche un message lisible associé à l'erreur.
 
-### **Alternative avec `perror()` :**  
+### **Exemple (à jour) :**  
 ```cpp
 #include <iostream>
 #include <cstdio>
 
 int main() {
-    FILE* file = fopen("fichier_inexistant.txt", "r");
-    if (!file) {
+    FILE* file;
+    errno_t err;
+    err = fopen_s(&file, "fichier_inexistant.txt", "r");
+    if (err != 0) {
         perror("Erreur d'ouverture du fichier");
     }
     return 0;
